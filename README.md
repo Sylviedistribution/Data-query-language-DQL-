@@ -61,11 +61,11 @@ Explanation: This query retrieves all information about customers. It is simple 
 
 2.  Display product_name and category for products with price between 5000 and 10000
 
-        SELECT product_name, category FROM product WHERE price BETWEEN 5000 AND 10000;
+   SELECT product_name, category FROM product WHERE price BETWEEN 5000 AND 10000;
 
         OR
 
-        SELECT product_name, category FROM product WHERE price >= 5000 AND price <= 10000;
+   SELECT product_name, category FROM product WHERE price >= 5000 AND price <= 10000;
 
 Explanation: Filters products within a specific price range. Using BETWEEN or >= AND <= achieves the same result. This query helps identify mid-priced products.
 
@@ -77,20 +77,20 @@ Explanation: Orders the products from most expensive to least expensive. Useful 
 
 4a. Display total number of orders, average, maximum, and minimum order amounts
 
-    SELECT COUNT(id) AS TOTAL_ORDERS,
-    AVG(total_amount) AS AVG_AMOUNT,
-    MAX(total_amount) AS MAX_AMOUNT,
-    MIN(total_amount) AS MIN_AMOUNT
-    FROM orders;
+   SELECT COUNT(id) AS TOTAL_ORDERS,
+   AVG(total_amount) AS AVG_AMOUNT,
+   MAX(total_amount) AS MAX_AMOUNT,
+   MIN(total_amount) AS MIN_AMOUNT
+   FROM orders;
 
 Explanation: Provides aggregate statistics about all orders. I used COUNT(id) instead of COUNT(customer_id) to ensure all orders are counted correctly, even if customer_id were NULL. 
 
 4b. For each product_id, display the number of orders
 
-    SELECT product_id, COUNT(id) AS TOTAL_ORDER
-    FROM orders
-    GROUP BY product_id
-    ORDER BY product_id;
+   SELECT product_id, COUNT(id) AS TOTAL_ORDER
+   FROM orders
+   GROUP BY product_id
+   ORDER BY product_id;
 
 Explanation: Counts how many times each product was ordered. This is useful for analyzing product popularity. When we want to group by the result we do that on the element without a group function. In this case we group by th product_id.
 
@@ -145,10 +145,10 @@ Option 1: NOT IN
 
 Option 2: LEFT JOIN
 
-    SELECT c.customer_id
-    FROM customer c
-    LEFT JOIN orders o ON c.customer_id = o.customer_id
-    WHERE o.customer_id IS NULL;
+   SELECT c.customer_id
+   FROM customer c
+   LEFT JOIN orders o ON c.customer_id = o.customer_id
+   WHERE o.customer_id IS NULL;
 
 Explanation: Both approaches return customers without orders.
 
