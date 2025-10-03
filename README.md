@@ -63,7 +63,7 @@ Explanation: This query retrieves all information about customers. It is simple 
 
    SELECT product_name, category FROM product WHERE price BETWEEN 5000 AND 10000;
 
-        OR
+   OR
 
    SELECT product_name, category FROM product WHERE price >= 5000 AND price <= 10000;
 
